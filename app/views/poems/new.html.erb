@@ -1,0 +1,34 @@
+<h2>Poems</h2>
+
+<%= form_for(@poem) do |f| %>
+  
+
+  <p>
+    <%= f.label :author_name %>
+    <%= f.collection_select :author_name, Poem.all, :author_name, :author_name, prompt: true %>
+  </p>
+
+  <p>
+    <%= f.label :title %>
+    <%= f.collection_select :title, Poem.all, :title, :title, prompt: true %>
+  </p>
+
+  <p>
+    <%= f.label :lines %>
+    <%= f.collection_select :lines, Poem.all, :lines, :lines, prompt: true %>
+  </p>
+
+  <%= f.fields_for :lists do |list_builder| %>
+    <p>
+      <%= list_builder.label :owner_name %>
+      <%= list_builder.collection_select :owner_name, List.all, :owner_name, :owner_name, prompt: true %>
+    </p>
+  <% end %>
+    
+  <%= f.submit %>
+    
+  <% end %>
+
+</form>
+    
+

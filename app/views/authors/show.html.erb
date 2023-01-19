@@ -1,0 +1,8 @@
+<h1><%= @author.name %></h1>
+
+<ul>
+  <% @author.poems.each do |poem| %>
+   
+    <%= link_to poem.title, poem_path(poem) %></li>
+  <% end %>
+</ul>

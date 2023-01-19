@@ -1,0 +1,16 @@
+<h2><%= " #{@list.owner_name} Poem List" %></h2>
+
+<p>
+  <h3>Author:</h3>
+  <%= @list.poem.author_name %>
+  <h3>Title:</h3>
+  <%= @list.poem.title %>
+  <h3>Lines:</h3>
+  <%= @list.poem.lines %>   
+  <% end %>
+</p>
+
+<%= link_to 'Back', lists_path %>
+
+
+  
