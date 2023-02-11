@@ -19,8 +19,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_171225) do
 
   create_table "lists", force: :cascade do |t|
     t.string "owner_name"
-    t.integer "author_id"
-    t.integer "poem_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_171225) do
     t.string "author_name"
     t.string "title"
     t.string "lines"
+    t.integer "author_id"
+    t.integer "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
