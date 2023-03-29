@@ -6,7 +6,7 @@
 
 
 class Author < ApplicationRecord
-  has_many :lists
+  has_many :poems
   has_many :lists, through: :poems 
   validates :name, presence: true
 end

@@ -2,15 +2,12 @@
 
 <p>
   <h3>Name:</h3>
-  <h2><%= @poem.author_name %></h2>
+  <h2><%= link_to @poem.author_name, author_path(@poem)  %></h2>
   <h3>Title:</h3>
-  <h2><%= @poem.title %></h2>
+  <h2><%= link_to @poem.title, author_path(@poem) %></h2>
   <h3>Lines:</h3>
   <h2><%= @poem.lines %></h2>
 </p>
 
-Lists:
- <% @poem.lists.each do |list| %>
-    <h2><%= list.owner_name %></h2>
- <% end %>
+
 

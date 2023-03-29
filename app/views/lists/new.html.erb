@@ -1,4 +1,4 @@
-<h2>List of Poems</h2>
+<h2>Create list of favorite lines from Poems</h2>
 
 <% if @list.errors.any? %>
   <div id="error_explanation">
@@ -16,20 +16,20 @@
 <% end %>
 
 <%= form_for(@list) do |f| %>
-  
-  <p><%= f.collection_select :owner_name, List.all, :id, :owner_name, prompt: true %></p>
-  <p><%= f.collection_select :poem, Poem.all, :id, :author_name, prompt: true %></p>
-  <p><%= f.collection_select :poem, Poem.all, :id, :title, prompt: true %></p>
-  <p><%= f.collection_select :poem, Poem.all, :id, :lines, prompt: true %></p>
-  
+
+  <p>
+  <%= f.label :owner_name %>
+  <%= f.text_field :owner_name %>
+  </p>
+
+
+  <p>
+  <%= f.label :lines %>:<br>
+  <%= f.collection_check_boxes(:poems, Poem.all, :id, :lines, prompt: true) do |b| %>
+  <p><%= b.label(:"data-value" => b.value) { b.check_box + b.text } %></p>
+  <% end %>
+  </p>
+
   <%= f.submit %>
   
 <% end %>
-
-
-
-
-    
-
-
-

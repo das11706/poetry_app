@@ -9,74 +9,51 @@
 require 'rest-client'
 require 'json'
 
-# Author.destroy_all
-# List.destroy_all
-# Poem.destroy_all
-
-# shakes = Author.create({ name: "William Shakespeare" })
-# poe = Author.create({ name: "Edgar Allen Poe" })
-
-# roandjul = Poem.create({ author_name: "William Shakespeare", title: "Romeo and Juliet", lines: "Parting is such sweet sorrow." })
-# raven = Poem.create({ author_name: "Edgar Allen Poe", title: "The Raven", lines: "Quoth the Raven, Nevermore." })
 
 
-# List.create([
-#   {owner_name: "Dan Suarez", author: shakes, poem: roandjul },
-#   {owner_name: "Agus Roap", author: poe, poem: raven },
-# ])
-
-
-
-# poem1 = Poem.create([{ author_name: "William Shakespeare", title: "Romeo and Juliet", lines: "Parting is such sweet sorrow."  }])
-# poem2 = Poem.create([{ author_name: "Edgar Allen Poe", title: "The Raven", lines: "Quoth the Raven, Nevermore."  }])
-
-
-# shakespeare_data = get_authors.each do |author|
-# Author.create(name: shakespeare_data["name"])
-
-# poe_data = get_authors
-# Author.create(name: poe_data["name"])
-
-# def get_poems
-#     url = "https://poetrydb.org//author/all"
-#     response = RestClient.get(url)
-    
-#     response_array = JSON.parse(response)
-#     response_array.each do |poem|
-#      Poem.create([{author_name: poem["author"], title: poem["title"], lines: poem["lines"]}])
-#     #  Poem.create( author_name: poem["author"], title: poem["title"], lines: poem["lines"] )  
-#       # byebug
-#     end
-# end
-#   get_poems
-
-  # def get_lists
-  #   url = "https://poetrydb.org//author/all"
-  #   response = RestClient.get(url)
-  #   # byebug
-  #   response_array = JSON.parse(response)
-  #   response_array.each do |list|
-  #     # byebug
-  #    List.create(author_name: list["author"], title: list["title"], lines: list["lines"])    
+def get_poems
+    url = "https://poetrydb.org/author/all"
+    # url = "https://poetrydb.org/title"
+    response = RestClient.get(url) 
+    response_array = JSON.parse(response)
+    response_array.each do |poem|
+      # byebug
+     author = Author.find_or_create_by(name: poem["author"])
+    #  author = Author.create(name: poem["author"])
     #  byebug
-  #   end
-  # end
-  # get_lists()
 
+    list = List.create([ {owner_name: "Dan Suarez" }, {owner_name: "Agus Roap" }, {owner_name: "Los Vega" } ])
+    #  list = List.create(owner_name: "owner_name")
+     list.sample["owner_name"]
+
+    #  poem = Poem.create(author_name: poem["author"], title: poem["title"], lines: poem["lines"].join(", "), author_id: author.id) 
+    poem = Poem.create(author_name: poem["author"], title_name: poem["title"], lines: poem["lines"].join(", "), author_id: author.id) 
+    #  byebug 
+    end
+end
+  get_poems
+
+  
   def get_authors
     url = "https://poetrydb.org/author"
     response = RestClient.get(url)
 
     response_array = JSON.parse(response)
     response_array["authors"].each do |author|
+    # response_array.each do |author|
+    # response_array.each do |authors|
+    #   authors[1].each do |author|
       # byebug
-      
-          Author.create(name: author)  
-    
+      a = Author.create(name: author)    
+      # a = Author.create(name: author["name"])  
+      # byebug 
       # response_array["authors"][0]
-      # author[1][0]
-    
+      # author[1][0] 
+    #   end
     end
   end
   get_authors
+
+
+  
 

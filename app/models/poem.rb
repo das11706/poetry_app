@@ -14,8 +14,9 @@
 
 class Poem < ApplicationRecord
   belongs_to :author
-  belongs_to :poem
+  belongs_to :list, optional: true
   validates :author_name, presence: true
+  
   # accepts_nested_attributes_for :lists  
 end
 
