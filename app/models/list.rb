@@ -17,11 +17,18 @@ class List < ApplicationRecord
   # has_many :authors, through: :poems
   # validates :owner_name, presence: true
 
-  has_many :poems
-  has_many :authors, through: :poems
-  validates :owner_name, presence: true, uniqueness: true
+  # belongs_to :poems
+  # belongs_to :authors
+  # validates :owner_name, presence: true, uniqueness: true
   # validates :author_name, uniqueness: true
   # accepts_nested_attributes_for :poems
+
+  
+    has_many :poems
+    has_many :authors, through: :poems
+    validates :owner_name, presence: true, uniqueness: true
+    # validates :owner_name, presence: true
+
 
   def poems_attributes=(poems_attributes)
     # raise poems_attributes.inspect

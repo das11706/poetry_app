@@ -29,7 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_171225) do
     t.string "lines"
     t.integer "author_id"
     t.integer "list_id"
-    t.integer "title_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

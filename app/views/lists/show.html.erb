@@ -1,12 +1,14 @@
 <h2><%= " #{@list.owner_name} Poem List" %></h2>
 
 <p>
+  
+  <% @list.poems.each do |p| %>
   <h3>Author:</h3>
-  <%= @list.poem.author_name %>
+  <%= p.author_name %>
   <h3>Title:</h3>
-  <%= @list.poem.title_name %>
+  <%= p.title_name %>
   <h3>Lines:</h3>
-  <%= @list.poem.lines %>   
+  <%= p.lines %>   
   <% end %>
 </p>
 

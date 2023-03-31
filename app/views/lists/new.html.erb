@@ -22,13 +22,13 @@
   <%= f.text_field :owner_name %>
   </p>
 
-
   <p>
   <%= f.label :lines %>:<br>
-  <%= f.collection_check_boxes(:poems, Poem.all, :id, :lines, prompt: true) do |b| %>
+  <%= f.collection_check_boxes(:poem_ids, Poem.all, :id, :lines, prompt: true) do |b| %>
   <p><%= b.label(:"data-value" => b.value) { b.check_box + b.text } %></p>
   <% end %>
   </p>
+
 
   <%= f.submit %>
   

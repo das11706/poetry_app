@@ -22,12 +22,13 @@ def get_poems
     #  author = Author.create(name: poem["author"])
     #  byebug
 
-    list = List.create([ {owner_name: "Dan Suarez" }, {owner_name: "Agus Roap" }, {owner_name: "Los Vega" } ])
+    # list = List.create([ {owner_name: "Dan Suarez" }, {owner_name: "Agus Roap" }, {owner_name: "Los Vega" } ])
     #  list = List.create(owner_name: "owner_name")
-     list.sample["owner_name"]
+    #  list.sample["owner_name"]
 
-    #  poem = Poem.create(author_name: poem["author"], title: poem["title"], lines: poem["lines"].join(", "), author_id: author.id) 
-    poem = Poem.create(author_name: poem["author"], title_name: poem["title"], lines: poem["lines"].join(", "), author_id: author.id) 
+
+     poem = Poem.create(author_name: poem["author"], title_name: poem["title"], lines: poem["lines"].join(", "), author_id: author.id) 
+    # poem = Poem.create(author_name: poem["author"], title_name: poem["title"], lines: poem["lines"].join(", ")) 
     #  byebug 
     end
 end
